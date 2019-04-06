@@ -1,19 +1,12 @@
+language: java
+jdk:
+- oraclejdk8
+
 addons:
   sonarcloud:
     organization: "dfalessicalpoly-github"
     token:
-      secure: "a36ae2b1f17ae495eb84e4050b7e89f7efc079ae"
-	  
-jdk:
-  - oraclejdk8
-
+      secure: "51c78fe1939321d2eb80872ab85b15710e03f97a"
 script:
-  # JaCoCo is used to have code coverage, the agent has to be activated
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
-  
-cache:
-  directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar/cache'
-  
-  
+- ant build
+- sonar-scanner
